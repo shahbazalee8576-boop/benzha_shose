@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BENZHA MODE – Premium Footwear</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g1: #4EB87A;
+  --g2: #2D8A57;
+  --g3: #E6F4EC;
+  --g4: #B8DFC8;
+  --white: #FBFCFA;
+  --off: #F3F5F1;
+  --grey1: #E4E8E2;
+  --grey2: #9FAD9B;
+  --grey3: #6B7A67;
+  --dark: #1C2219;
+  --card-shadow: 0 2px 20px rgba(30,50,30,0.07);
+  --hover-shadow: 0 12px 40px rgba(78,184,122,0.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+img { display: block; }
+
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--off); }
+::-webkit-scrollbar-thumb { background: var(--g4); border-radius: 3px; }
+
+/* ═══ NAV ═══ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%;
+  background: rgba(251,252,250,0.93);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(180,210,185,0.28);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--dark);
+}
+.nav-logo span { color: var(--g1); }
+.nav-links { display: flex; gap: 2.4rem; list-style: none; }
+.nav-links a {
+  text-decoration: none; font-size: 0.84rem; font-weight: 500;
+  color: var(--grey3); letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--g1); }
+.nav-right { display: flex; align-items: center; gap: 1.2rem; }
+.nav-icon-btn {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--off); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--grey3); transition: all 0.2s;
+}
+.nav-icon-btn:hover { background: var(--g3); color: var(--g2); }
+.nav-icon-btn svg { width: 17px; height: 17px; }
+.btn-nav {
+  background: var(--dark); color: #fff; border: none;
+  padding: 0.5rem 1.4rem; border-radius: 50px;
+  font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  letter-spacing: 0.03em; transition: all 0.2s;
+}
+.btn-nav:hover { background: var(--g1); }
+
+/* ═══ BUTTONS ═══ */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--g1); color: #fff; border: none;
+  padding: 0.88rem 2rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 24px rgba(78,184,122,0.3);
+  transition: all 0.22s;
+}
+.btn-primary:hover { background: var(--g2); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(78,184,122,0.38); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--dark);
+  border: 1.8px solid var(--grey1);
+  padding: 0.88rem 1.8rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  transition: all 0.22s;
+}
+.btn-secondary:hover { border-color: var(--g1); color: var(--g1); }
+.btn-dark {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--dark); color: #fff; border: none;
+  padding: 0.88rem 2rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  transition: all 0.22s;
+}
+.btn-dark:hover { background: var(--g2); transform: translateY(-2px); }
+
+/* ═══ SECTION LABEL / TITLE ═══ */
+.label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--g1); margin-bottom: 0.7rem;
+}
+.label::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--g1); border-radius: 2px; }
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700; line-height: 1.15; color: var(--dark);
+}
+.section-sub { font-size: 0.92rem; color: var(--grey2); line-height: 1.75; margin-top: 0.9rem; }
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px 6% 0;
+  background: linear-gradient(150deg, var(--white) 50%, var(--g3) 100%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 75% 55%, rgba(78,184,122,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--g3); border: 1px solid var(--g4);
+  border-radius: 50px; padding: 0.35rem 1rem;
+  font-size: 0.76rem; font-weight: 700;
+  color: var(--g2); letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: slideUp 0.6s ease both;
+}
+.hero-eyebrow span { width: 6px; height: 6px; border-radius: 50%; background: var(--g1); }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-weight: 700; line-height: 1.08;
+  color: var(--dark); margin-bottom: 1.4rem;
+  animation: slideUp 0.6s 0.08s ease both;
+}
+.hero h1 em { color: var(--g1); font-style: normal; display: block; }
+.hero-desc {
+  font-size: 1rem; color: var(--grey3); line-height: 1.8;
+  max-width: 420px; margin-bottom: 2rem;
+  animation: slideUp 0.6s 0.15s ease both;
+  font-weight: 400;
+}
+.hero-price-row {
+  display: flex; align-items: baseline; gap: 1rem;
+  margin-bottom: 2.2rem;
+  animation: slideUp 0.6s 0.22s ease both;
+}
+.hero-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.2rem; font-weight: 700; color: var(--dark);
+}
+.hero-price-was {
+  font-size: 1.1rem; color: var(--grey2); text-decoration: line-through; font-weight: 400;
+}
+.hero-price-save {
+  background: var(--g1); color: #fff;
+  border-radius: 50px; padding: 0.2rem 0.75rem;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em;
+}
+.hero-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: slideUp 0.6s 0.28s ease both;
+}
+.hero-meta {
+  display: flex; gap: 3rem; margin-top: 3.5rem;
+  animation: slideUp 0.6s 0.35s ease both;
+}
+.hero-meta-item { display: flex; flex-direction: column; }
+.hero-meta-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem; font-weight: 700; color: var(--dark);
+}
+.hero-meta-txt { font-size: 0.78rem; color: var(--grey2); font-weight: 500; margin-top: 0.1rem; }
+
+/* hero image */
+.hero-img-col {
+  display: flex; align-items: flex-end; justify-content: center;
+  height: 100%; padding-top: 68px; position: relative;
+  animation: slideRight 0.9s 0.1s ease both;
+}
+.hero-shoe-frame {
+  position: relative; width: min(520px, 94%);
+}
+.hero-shoe-frame img {
+  width: 100%;
+  height: 560px; object-fit: cover; object-position: center;
+  border-radius: 40px 40px 0 0;
+  box-shadow: 0 30px 80px rgba(30,50,30,0.18);
+}
+.hero-floating-tag {
+  position: absolute;
+  background: #fff;
+  border-radius: 16px;
+  padding: 0.8rem 1.2rem;
+  box-shadow: var(--hover-shadow);
+  min-width: 148px;
+}
+.hero-floating-tag.tag1 { top: 15%; left: -8%; }
+.hero-floating-tag.tag2 { bottom: 14%; right: -6%; }
+.tag-label { font-size: 0.7rem; color: var(--grey2); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+.tag-val { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-top: 0.2rem; }
+.tag-stars { color: #F4B942; font-size: 0.8rem; margin-top: 0.15rem; }
+.tag-sizes { display: flex; gap: 0.35rem; margin-top: 0.5rem; }
+.tag-size {
+  width: 28px; height: 28px; border-radius: 8px;
+  border: 1.5px solid var(--grey1); background: #fff;
+  font-size: 0.68rem; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--grey3); cursor: pointer; transition: all 0.15s;
+}
+.tag-size.active, .tag-size:hover { background: var(--g1); border-color: var(--g1); color: #fff; }
+
+/* ═══ PREVIEW STRIP ═══ */
+.preview {
+  padding: 3.5rem 6%;
+  background: var(--off);
+}
+.preview-inner {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+}
+.preview-card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; gap: 0; flex-direction: column;
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s; cursor: pointer;
+  border: 1.5px solid transparent;
+}
+.preview-card:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); border-color: var(--g4); }
+.preview-img {
+  width: 100%; height: 180px; object-fit: cover;
+  transition: transform 0.4s;
+}
+.preview-card:hover .preview-img { transform: scale(1.04); }
+.preview-img-wrap { overflow: hidden; }
+.preview-body { padding: 1.1rem 1.2rem; display: flex; justify-content: space-between; align-items: center; }
+.preview-name { font-size: 0.88rem; font-weight: 600; }
+.preview-cat { font-size: 0.74rem; color: var(--grey2); margin-top: 0.15rem; }
+.preview-price { font-size: 1.05rem; font-weight: 700; color: var(--g2); }
+.preview-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--g3); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--g2); transition: all 0.2s; flex-shrink: 0;
+}
+.preview-icon:hover { background: var(--g1); color: #fff; }
+.preview-icon svg { width: 15px; height: 15px; }
+
+/* ═══ POPULAR ═══ */
+.popular { padding: 5.5rem 6%; }
+.popular-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 2.8rem; flex-wrap: wrap; gap: 1.5rem;
+}
+.filter-bar { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.filter-btn {
+  padding: 0.45rem 1.15rem; border-radius: 50px;
+  border: 1.5px solid var(--grey1); background: #fff;
+  font-size: 0.8rem; font-weight: 600; color: var(--grey3);
+  cursor: pointer; transition: all 0.18s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--g1); border-color: var(--g1); color: #fff;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+.product-card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1.5px solid transparent;
+  transition: all 0.25s; cursor: pointer;
+  position: relative;
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: var(--hover-shadow); border-color: var(--g4); }
+.p-img-wrap { overflow: hidden; position: relative; height: 220px; }
+.p-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s; }
+.product-card:hover .p-img-wrap img { transform: scale(1.06); }
+.p-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--g1); color: #fff;
+  border-radius: 50px; padding: 0.18rem 0.65rem;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.p-badge.sale { background: #E05C5C; }
+.p-badge.hot { background: #F4A442; }
+.p-wish {
+  position: absolute; top: 12px; right: 12px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.92); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--card-shadow); color: var(--grey2);
+  transition: all 0.2s;
+}
+.p-wish:hover, .p-wish.active { color: #E05C5C; }
+.p-wish svg { width: 15px; height: 15px; }
+.p-body { padding: 1.1rem 1.2rem 1.3rem; }
+.p-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); }
+.p-name { font-size: 0.93rem; font-weight: 700; color: var(--dark); margin: 0.25rem 0 0.4rem; }
+.p-stars { display: flex; align-items: center; gap: 0.35rem; }
+.stars { color: #F4B942; font-size: 0.78rem; }
+.p-reviews { font-size: 0.72rem; color: var(--grey2); }
+.p-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.9rem; }
+.p-price { font-size: 1.1rem; font-weight: 700; color: var(--dark); }
+.p-price small { font-size: 0.78rem; color: var(--grey2); text-decoration: line-through; margin-left: 0.4rem; font-weight: 400; }
+.p-add {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--g3); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--g2); transition: all 0.2s;
+}
+.p-add:hover { background: var(--g1); color: #fff; transform: scale(1.08); }
+.p-add svg { width: 16px; height: 16px; }
+
+/* ═══ VIEW MORE ═══ */
+.view-more { text-align: center; margin-top: 3rem; }
+
+/* ═══ QUALITY SECTION ═══ */
+.quality {
+  margin: 0 4%; border-radius: 32px;
+  background: var(--g3);
+  padding: 5.5rem 6%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  align-items: center;
+}
+.quality-points { display: flex; flex-direction: column; gap: 1.4rem; margin-top: 2rem; }
+.q-point {
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.q-icon {
+  width: 44px; height: 44px; border-radius: 14px;
+  background: rgba(78,184,122,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--g2);
+}
+.q-icon svg { width: 20px; height: 20px; }
+.q-text h4 { font-size: 0.92rem; font-weight: 700; color: var(--dark); }
+.q-text p { font-size: 0.82rem; color: var(--grey3); line-height: 1.65; margin-top: 0.2rem; }
+.quality-cta { margin-top: 2.5rem; }
+.quality-img { position: relative; }
+.quality-img img {
+  width: 100%; height: 520px; object-fit: cover; object-position: center;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(30,80,30,0.15);
+}
+.quality-img-badge {
+  position: absolute; bottom: -18px; left: -18px;
+  background: #fff; border-radius: 20px;
+  padding: 1.2rem 1.6rem;
+  box-shadow: 0 8px 32px rgba(30,60,30,0.12);
+  min-width: 180px;
+}
+.qbadge-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 700; color: var(--dark);
+}
+.qbadge-txt { font-size: 0.8rem; color: var(--grey2); font-weight: 500; margin-top: 0.1rem; }
+.qbadge-bar { height: 4px; border-radius: 2px; background: var(--grey1); margin-top: 0.7rem; }
+.qbadge-bar-fill { height: 4px; border-radius: 2px; background: var(--g1); width: 92%; }
+
+/* ═══ FEATURES ═══ */
+.features { padding: 4rem 6%; background: var(--off); }
+.features-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.feature-box {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 2.2rem;
+  box-shadow: var(--card-shadow);
+  border: 1.5px solid transparent;
+  text-align: center;
+  transition: all 0.25s;
+}
+.feature-box:hover { border-color: var(--g4); box-shadow: var(--hover-shadow); transform: translateY(-4px); }
+.feat-icon {
+  width: 64px; height: 64px; border-radius: 20px;
+  background: var(--g3); margin: 0 auto 1.4rem;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--g2);
+}
+.feat-icon svg { width: 28px; height: 28px; }
+.feature-box h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.55rem; }
+.feature-box p { font-size: 0.85rem; color: var(--grey2); line-height: 1.65; }
+
+/* ═══ SPECIAL OFFER ═══ */
+.offer { padding: 5.5rem 6%; background: var(--white); }
+.offer-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.offer-cards { display: flex; flex-direction: column; gap: 1.1rem; }
+.offer-card {
+  background: var(--off);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; align-items: center; gap: 0;
+  border: 1.5px solid transparent;
+  transition: all 0.22s; cursor: pointer;
+}
+.offer-card:hover { border-color: var(--g4); box-shadow: var(--hover-shadow); transform: translateX(4px); }
+.offer-card-img { width: 110px; height: 100px; object-fit: cover; flex-shrink: 0; }
+.offer-card-body { padding: 1rem 1.2rem; flex: 1; }
+.offer-card-name { font-size: 0.9rem; font-weight: 700; color: var(--dark); }
+.offer-card-cat { font-size: 0.72rem; color: var(--grey2); margin-top: 0.1rem; }
+.offer-card-price { margin-top: 0.5rem; }
+.offer-price-now { font-size: 1.05rem; font-weight: 700; color: var(--g2); }
+.offer-price-was { font-size: 0.8rem; color: var(--grey2); text-decoration: line-through; margin-left: 0.5rem; }
+.offer-right { }
+.countdown { display: flex; gap: 0.9rem; margin: 2rem 0; }
+.count-box {
+  background: var(--dark); color: #fff;
+  border-radius: 16px; padding: 1rem 1.2rem;
+  text-align: center; min-width: 72px;
+}
+.count-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700; line-height: 1;
+}
+.count-lbl { font-size: 0.65rem; color: var(--grey2); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3rem; }
+.offer-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+/* ═══ REVIEWS ═══ */
+.reviews { padding: 5.5rem 6%; background: var(--off); }
+.reviews-head { text-align: center; margin-bottom: 3rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.review-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  border: 1.5px solid transparent;
+  transition: all 0.25s;
+}
+.review-card:hover { border-color: var(--g4); transform: translateY(-4px); box-shadow: var(--hover-shadow); }
+.review-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.3rem; }
+.review-avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--g4); flex-shrink: 0; }
+.review-name { font-size: 0.92rem; font-weight: 700; }
+.review-loc { font-size: 0.75rem; color: var(--grey2); margin-top: 0.1rem; }
+.review-stars { color: #F4B942; font-size: 0.82rem; margin-top: 0.2rem; }
+.review-quote {
+  font-size: 0.88rem; color: var(--grey3); line-height: 1.75;
+  border-left: 3px solid var(--g4); padding-left: 1rem;
+}
+.review-product { margin-top: 1.2rem; font-size: 0.75rem; font-weight: 600; color: var(--g2); }
+
+/* ═══ FOOTER ═══ */
+footer {
+  background: var(--dark); color: #fff;
+  padding: 0;
+}
+.footer-news {
+  background: var(--g1);
+  padding: 3.5rem 6%;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 2rem; flex-wrap: wrap;
+}
+.footer-news h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700;
+}
+.footer-news p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.3rem; }
+.newsletter-form { display: flex; gap: 0.7rem; }
+.newsletter-form input {
+  padding: 0.82rem 1.4rem; border-radius: 50px; border: none;
+  background: rgba(255,255,255,0.22); color: #fff;
+  font-size: 0.88rem; outline: none; width: 280px;
+  font-family: 'Outfit', sans-serif;
+  transition: background 0.2s;
+}
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.65); }
+.newsletter-form input:focus { background: rgba(255,255,255,0.3); }
+.newsletter-form button {
+  padding: 0.82rem 1.8rem; border-radius: 50px; border: none;
+  background: var(--dark); color: #fff;
+  font-size: 0.88rem; font-weight: 700; cursor: pointer;
+  font-family: 'Outfit', sans-serif; letter-spacing: 0.03em;
+  transition: opacity 0.2s;
+}
+.newsletter-form button:hover { opacity: 0.8; }
+.footer-main { padding: 4rem 6% 2.5rem; }
+.footer-cols {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 2.5rem; margin-bottom: 3rem;
+}
+.footer-brand .logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em;
+  color: #fff; text-transform: uppercase; margin-bottom: 1rem;
+}
+.footer-brand .logo span { color: var(--g1); }
+.footer-brand p { font-size: 0.83rem; color: #7A8A76; line-height: 1.7; max-width: 230px; }
+.footer-socials { display: flex; gap: 0.7rem; margin-top: 1.5rem; }
+.soc-btn {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,0.07); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #7A8A76; transition: all 0.2s;
+}
+.soc-btn:hover { background: var(--g1); color: #fff; }
+.soc-btn svg { width: 16px; height: 16px; }
+.footer-col h4 { font-size: 0.84rem; font-weight: 700; color: #CDD8CA; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.2rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.footer-col a { text-decoration: none; font-size: 0.83rem; color: #7A8A76; transition: color 0.2s; }
+.footer-col a:hover { color: var(--g1); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 2rem; flex-wrap: wrap; gap: 1rem;
+}
+.footer-bottom p { font-size: 0.78rem; color: #5A6A56; }
+.pay-methods { display: flex; gap: 0.7rem; }
+.pay-pill {
+  padding: 0.3rem 0.8rem; border-radius: 8px;
+  background: rgba(255,255,255,0.07);
+  font-size: 0.72rem; font-weight: 700; color: #7A8A76;
+  letter-spacing: 0.04em;
+}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1100px) {
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding-top: 80px; min-height: auto; padding-bottom: 3rem; }
+  .hero-img-col { height: 360px; padding-top: 0; }
+  .hero-shoe-frame img { height: 360px; border-radius: 24px; }
+  .quality { grid-template-columns: 1fr; gap: 3rem; }
+  .offer-layout { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-inner { grid-template-columns: 1fr; }
+  .footer-cols { grid-template-columns: 1fr 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .preview-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 4%; }
+  .nav-links { display: none; }
+  .hero, .preview, .popular, .quality, .features, .offer, .reviews { padding-left: 4%; padding-right: 4%; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+  .footer-cols { grid-template-columns: 1fr; }
+  .footer-news { flex-direction: column; }
+  .newsletter-form { flex-direction: column; width: 100%; }
+  .newsletter-form input { width: 100%; }
+  .quality { margin: 0 2%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <div class="nav-logo">BENZHA <span>MODE</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Collection</a></li>
+    <li><a href="#">Men</a></li>
+    <li><a href="#">Women</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn" title="Search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="nav-icon-btn" title="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    </button>
+    <button class="btn-nav">Sign In</button>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span></span>New Season 2026</div>
+    <h1>Benzha Air<br><em>Collection</em></h1>
+    <p class="hero-desc">Engineered for those who move with purpose. Premium footwear that unites architectural design with cloud-level comfort.</p>
+    <div class="hero-price-row">
+      <div class="hero-price">$199</div>
+      <div class="hero-price-was">$259</div>
+      <div class="hero-price-save">SAVE 23%</div>
+    </div>
+    <div class="hero-cta">
+      <button class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Add To Cart
+      </button>
+      <button class="btn-secondary">Explore All →</button>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">12K+</span>
+        <span class="hero-meta-txt">Customers</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">200+</span>
+        <span class="hero-meta-txt">Styles</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">4.9</span>
+        <span class="hero-meta-txt">Rating</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-img-col">
+    <div class="hero-shoe-frame">
+      <img src="p1.png"  alt="Benzha Air Collection Sneaker">
+      <div class="hero-floating-tag tag1">
+        <div class="tag-label">Rating</div>
+        <div class="tag-val">4.9 / 5.0</div>
+        <div class="tag-stars">★★★★★</div>
+      </div>
+      <div class="hero-floating-tag tag2">
+        <div class="tag-label">Size</div>
+        <div class="tag-sizes">
+          <div class="tag-size">40</div>
+          <div class="tag-size active">41</div>
+          <div class="tag-size">42</div>
+          <div class="tag-size">43</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PREVIEW STRIP ══════════ -->
+<div class="preview">
+  <div class="preview-inner">
+
+    <div class="preview-card reveal">
+      <div class="preview-img-wrap">
+        <img class="preview-img" src="p2.jpg" alt="Benzha Runner X">
+      </div>
+      <div class="preview-body">
+        <div>
+          <div class="preview-name">Benzha Runner X</div>
+          <div class="preview-cat">Sneakers · Unisex</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.7rem">
+          <div class="preview-price">$179</div>
+          <button class="preview-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-card reveal reveal-delay-1">
+      <div class="preview-img-wrap">
+        <img class="preview-img" src="p3.jpg" alt="Benzha Luxe Heel">
+      </div>
+      <div class="preview-body">
+        <div>
+          <div class="preview-name">Benzha Luxe Heel</div>
+          <div class="preview-cat">Heels · Women</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.7rem">
+          <div class="preview-price">$159</div>
+          <button class="preview-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-card reveal reveal-delay-2">
+      <div class="preview-img-wrap">
+        <img class="preview-img" src="p4.jpg" alt="Benzha Street Casual">
+      </div>
+      <div class="preview-body">
+        <div>
+          <div class="preview-name">Benzha Street Casual</div>
+          <div class="preview-cat">Casual · Men</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.7rem">
+          <div class="preview-price">$129</div>
+          <button class="preview-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ POPULAR PRODUCTS ══════════ -->
+<section class="popular">
+  <div class="popular-head">
+    <div>
+      <div class="label">Trending Now</div>
+      <h2 class="section-title">Our Popular Products</h2>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts(this,'all')">All</button>
+      <button class="filter-btn" onclick="filterProducts(this,'sneaker')">Sneakers</button>
+      <button class="filter-btn" onclick="filterProducts(this,'jordan')">Jordans</button>
+      <button class="filter-btn" onclick="filterProducts(this,'heel')">Heels</button>
+      <button class="filter-btn" onclick="filterProducts(this,'casual')">Casual</button>
+    </div>
+  </div>
+
+  <div class="products-grid" id="productsGrid">
+
+    <!-- 1 -->
+    <div class="product-card reveal" data-cat="sneaker">
+      <div class="p-img-wrap">
+        <img src="p5.jpg" alt="Benzha Air Max">
+        <span class="p-badge">NEW</span>
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Sneakers</div>
+        <div class="p-name">Benzha Air Max Pro</div>
+        <div class="p-stars">
+          <span class="stars">★★★★★</span>
+          <span class="p-reviews">(148 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$199 <small>$259</small></div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="product-card reveal reveal-delay-1" data-cat="jordan">
+      <div class="p-img-wrap">
+        <img src="p6.jpg" alt="Benzha Jordan Elite">
+        <span class="p-badge hot">HOT</span>
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Jordans</div>
+        <div class="p-name">Benzha Jordan Elite</div>
+        <div class="p-stars">
+          <span class="stars">★★★★★</span>
+          <span class="p-reviews">(312 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$249</div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="product-card reveal reveal-delay-2" data-cat="heel">
+      <div class="p-img-wrap">
+        <img src="p7.png" alt="Benzha Stiletto Luxe">
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Heels</div>
+        <div class="p-name">Benzha Stiletto Luxe</div>
+        <div class="p-stars">
+          <span class="stars">★★★★☆</span>
+          <span class="p-reviews">(89 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$159</div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="product-card reveal reveal-delay-3" data-cat="casual">
+      <div class="p-img-wrap">
+        <img src="p8.png" alt="Benzha Street Walk">
+        <span class="p-badge sale">SALE</span>
+        <button class="p-wish active" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Casual</div>
+        <div class="p-name">Benzha Street Walk</div>
+        <div class="p-stars">
+          <span class="stars">★★★★★</span>
+          <span class="p-reviews">(204 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$129 <small>$169</small></div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="product-card reveal" data-cat="sneaker">
+      <div class="p-img-wrap">
+        <img src="p9.png" alt="Benzha Cloud Runner">
+        <span class="p-badge">NEW</span>
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Sneakers</div>
+        <div class="p-name">Benzha Cloud Runner</div>
+        <div class="p-stars">
+          <span class="stars">★★★★★</span>
+          <span class="p-reviews">(176 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$219</div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="product-card reveal reveal-delay-1" data-cat="jordan">
+      <div class="p-img-wrap">
+        <img src="p10.jpg" alt="Benzha Jordan Low">
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Jordans</div>
+        <div class="p-name">Benzha Jordan Low OG</div>
+        <div class="p-stars">
+          <span class="stars">★★★★★</span>
+          <span class="p-reviews">(267 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$229</div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="product-card reveal reveal-delay-2" data-cat="heel">
+      <div class="p-img-wrap">
+        <img src="p11.jpg" alt="Benzha Block Heel">
+        <span class="p-badge hot">HOT</span>
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Heels</div>
+        <div class="p-name">Benzha Block Heel Classic</div>
+        <div class="p-stars">
+          <span class="stars">★★★★☆</span>
+          <span class="p-reviews">(55 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$149</div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="product-card reveal reveal-delay-3" data-cat="casual">
+      <div class="p-img-wrap">
+        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80&auto=format&fit=crop" alt="Benzha Everyday Slip">
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Casual</div>
+        <div class="p-name">Benzha Everyday Slip</div>
+        <div class="p-stars">
+          <span class="stars">★★★★★</span>
+          <span class="p-reviews">(130 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$109 <small>$139</small></div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="product-card reveal" data-cat="sneaker">
+      <div class="p-img-wrap">
+        <img src="p12.jpg" alt="Benzha Retro Wave">
+        <span class="p-badge">NEW</span>
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Sneakers</div>
+        <div class="p-name">Benzha Retro Wave</div>
+        <div class="p-stars">
+          <span class="stars">★★★★☆</span>
+          <span class="p-reviews">(98 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$189</div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="product-card reveal reveal-delay-1" data-cat="jordan">
+      <div class="p-img-wrap">
+        <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80&auto=format&fit=crop" alt="Benzha Jordan Fusion">
+        <span class="p-badge sale">SALE</span>
+        <button class="p-wish" onclick="toggleWish(this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="p-body">
+        <div class="p-cat">Jordans</div>
+        <div class="p-name">Benzha Jordan Fusion</div>
+        <div class="p-stars">
+          <span class="stars">★★★★★</span>
+          <span class="p-reviews">(211 reviews)</span>
+        </div>
+        <div class="p-footer">
+          <div class="p-price">$209 <small>$279</small></div>
+          <button class="p-add" onclick="addCart(this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="view-more reveal">
+    <button class="btn-dark">View All Collection →</button>
+  </div>
+</section>
+
+<!-- ══════════ QUALITY ══════════ -->
+<div class="quality">
+  <div>
+    <div class="label">Our Promise</div>
+    <h2 class="section-title reveal">Benzha Provides<br>Good Quality Footwear</h2>
+    <p class="section-sub reveal">Every pair is crafted with meticulous care, using premium materials that conform to your feet and support every step — from morning to midnight.</p>
+    <div class="quality-points">
+      <div class="q-point reveal reveal-delay-1">
+        <div class="q-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="q-text">
+          <h4>Premium Materials</h4>
+          <p>Sustainably sourced leather and engineered mesh for lasting comfort and style.</p>
+        </div>
+      </div>
+      <div class="q-point reveal reveal-delay-2">
+        <div class="q-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="q-text">
+          <h4>2-Year Guarantee</h4>
+          <p>Every Benzha pair comes backed by our premium quality assurance programme.</p>
+        </div>
+      </div>
+      <div class="q-point reveal reveal-delay-3">
+        <div class="q-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="q-text">
+          <h4>Made With Love</h4>
+          <p>Artisanal stitching and hand-finished edges on every pair we produce.</p>
+        </div>
+      </div>
+    </div>
+    <div class="quality-cta reveal">
+      <button class="btn-primary">Order Now →</button>
+    </div>
+  </div>
+  <div class="quality-img reveal">
+    <img src="aa.jpg" alt="Quality Footwear">
+    <div class="quality-img-badge">
+      <div class="qbadge-num">98%</div>
+      <div class="qbadge-txt">Customer satisfaction rate</div>
+      <div class="qbadge-bar"><div class="qbadge-bar-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FEATURES ══════════ -->
+<div class="features">
+  <div class="features-inner">
+    <div class="feature-box reveal">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <h3>Free Shipping</h3>
+      <p>Enjoy free delivery on all orders above $99. Fast, tracked, and reliable worldwide shipping right to your door.</p>
+    </div>
+    <div class="feature-box reveal reveal-delay-1">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <h3>Secure Payments</h3>
+      <p>All transactions are encrypted with 256-bit SSL and protected by industry-leading security protocols.</p>
+    </div>
+    <div class="feature-box reveal reveal-delay-2">
+      <div class="feat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>24/7 Support</h3>
+      <p>Our dedicated team is always here. Chat, email, or call — we respond within minutes, any hour of the day.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SPECIAL OFFER ══════════ -->
+<section class="offer">
+  <div class="offer-layout">
+    <div class="offer-cards">
+      <div class="label">Limited Time</div>
+      <div class="offer-card reveal">
+        <img class="offer-card-img" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80&auto=format&fit=crop" alt="Benzha Air Limited">
+        <div class="offer-card-body">
+          <div class="offer-card-name">Benzha Air Limited Ed.</div>
+          <div class="offer-card-cat">Sneakers · Unisex</div>
+          <div class="offer-card-price">
+            <span class="offer-price-now">$169</span>
+            <span class="offer-price-was">$229</span>
+          </div>
+        </div>
+      </div>
+      <div class="offer-card reveal reveal-delay-1">
+        <img class="offer-card-img" src="p13.jpg" alt="Jordan Series Drop">
+        <div class="offer-card-body">
+          <div class="offer-card-name">Jordan Series Drop</div>
+          <div class="offer-card-cat">Jordans · Men</div>
+          <div class="offer-card-price">
+            <span class="offer-price-now">$199</span>
+            <span class="offer-price-was">$289</span>
+          </div>
+        </div>
+      </div>
+      <div class="offer-card reveal reveal-delay-2">
+        <img class="offer-card-img" src="p14.jpg" alt="Luxe Heels Bundle">
+        <div class="offer-card-body">
+          <div class="offer-card-name">Luxe Heels Bundle</div>
+          <div class="offer-card-cat">Heels · Women</div>
+          <div class="offer-card-price">
+            <span class="offer-price-now">$139</span>
+            <span class="offer-price-was">$179</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offer-right reveal">
+      <div class="label">Flash Sale</div>
+      <h2 class="section-title">Special<br>Offer</h2>
+      <p class="section-sub">Don't miss our season's biggest sale. Premium styles at unbeatable prices — only while stocks last.</p>
+      <div class="countdown">
+        <div class="count-box">
+          <div class="count-num" id="cd-h">08</div>
+          <div class="count-lbl">Hours</div>
+        </div>
+        <div class="count-box">
+          <div class="count-num" id="cd-m">45</div>
+          <div class="count-lbl">Mins</div>
+        </div>
+        <div class="count-box">
+          <div class="count-num" id="cd-s">30</div>
+          <div class="count-lbl">Secs</div>
+        </div>
+      </div>
+      <div class="offer-btns">
+        <button class="btn-primary">Shop Now →</button>
+        <button class="btn-secondary">Learn More</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS ══════════ -->
+<section class="reviews">
+  <div class="reviews-head">
+    <div class="label" style="justify-content:center">Customer Love</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center;max-width:500px">Real stories from real Benzha Mode wearers around the world.</p>
+  </div>
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="review-top">
+        <img class="review-avatar" src="p5.jpg" alt="Amara J">
+        <div>
+          <div class="review-name">Amara Johansson</div>
+          <div class="review-loc">Fashion Blogger · Stockholm</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="review-quote">Hands down the most comfortable sneakers I have ever owned. The cushioning is incredible and they look stunning with everything. Highly recommend Benzha Mode to anyone who cares about quality.</p>
+      <div class="review-product">Purchased: Benzha Air Max Pro</div>
+    </div>
+
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-top">
+        <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop&face" alt="Karim A">
+        <div>
+          <div class="review-name">Karim Al-Farsi</div>
+          <div class="review-loc">Sneaker Collector · Dubai</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="review-quote">Ordered the Jordan Elite series and they arrived in 2 days, perfectly packaged. The quality is exceptional — way better than expected for the price. I have now ordered three pairs total.</p>
+      <div class="review-product">Purchased: Benzha Jordan Elite</div>
+    </div>
+
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-top">
+        <img class="review-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80&auto=format&fit=crop&face" alt="Priya M">
+        <div>
+          <div class="review-name">Priya Mehta</div>
+          <div class="review-loc">Lifestyle Influencer · Mumbai</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="review-quote">The Benzha heels are everything. Stylish, stable, and surprisingly comfortable for extended wear. Customer service was also top-notch when I needed to exchange a size. Will shop again for sure.</p>
+      <div class="review-product">Purchased: Benzha Stiletto Luxe</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-news">
+    <div>
+      <h3>Sign Up For Updates</h3>
+      <p>Be first to know about new drops, exclusive offers, and style guides.</p>
+    </div>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email address...">
+      <button>Subscribe</button>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <div class="logo">BENZHA <span>MODE</span></div>
+        <p>Premium footwear for every occasion. Crafted with passion, designed for life.</p>
+        <div class="footer-socials">
+          <button class="soc-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </button>
+          <button class="soc-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          </button>
+          <button class="soc-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </button>
+          <button class="soc-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Collection</h4>
+        <ul>
+          <li><a href="#">Sneakers</a></li>
+          <li><a href="#">Jordans</a></li>
+          <li><a href="#">Heels</a></li>
+          <li><a href="#">Casual</a></li>
+          <li><a href="#">Loafers</a></li>
+          <li><a href="#">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns & Refunds</a></li>
+          <li><a href="#">Sizing Guide</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Benzha Mode. All rights reserved. Premium Footwear Brand.</p>
+      <div class="pay-methods">
+        <span class="pay-pill">VISA</span>
+        <span class="pay-pill">Mastercard</span>
+        <span class="pay-pill">AMEX</span>
+        <span class="pay-pill">PayPal</span>
+        <span class="pay-pill">Apple Pay</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ JS ══════════ -->
+<script>
+// Countdown
+let secs = 8 * 3600 + 45 * 60 + 30;
+(function tick() {
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  if (secs-- > 0) setTimeout(tick, 1000);
+})();
+
+// Filter tabs
+function filterProducts(btn, cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(card => {
+    const show = cat === 'all' || card.dataset.cat === cat;
+    card.style.display = show ? '' : 'none';
+  });
+}
+
+// Wishlist toggle
+function toggleWish(btn) {
+  btn.classList.toggle('active');
+  const svg = btn.querySelector('svg');
+  if (btn.classList.contains('active')) {
+    svg.setAttribute('fill', '#E05C5C');
+    svg.setAttribute('stroke', '#E05C5C');
+  } else {
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+  }
+}
+
+// Add to cart
+function addCart(btn) {
+  const svg = btn.querySelector('svg');
+  btn.style.background = 'var(--g2)';
+  btn.style.color = '#fff';
+  svg.innerHTML = '<polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2.5" fill="none"/>';
+  setTimeout(() => {
+    btn.style.background = '';
+    btn.style.color = '';
+    svg.innerHTML = '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>';
+  }, 1400);
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Size selector
+document.querySelectorAll('.tag-size').forEach(sz => {
+  sz.addEventListener('click', () => {
+    sz.closest('.tag-sizes').querySelectorAll('.tag-size').forEach(s => s.classList.remove('active'));
+    sz.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
